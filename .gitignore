@@ -12,6 +12,7 @@ out
 *.iws
 *.iml
 .idea
+.vscode
 
 # gradle
 build
@@ -22,5 +23,4 @@ eclipse
 run
 runs
 run-data
-
 repo

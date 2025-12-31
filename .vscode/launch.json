@@ -6,17 +6,17 @@
       "request": "launch",
       "name": "Client",
       "presentation": {
-        "group": "Mod Development - fortnite-template-1.21.11",
+        "group": "Mod Development - fortnite-mc",
         "order": 0
       },
-      "projectName": "fortnite-template-1.21.11",
+      "projectName": "fortnite-mc",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\build\\moddev\\clientRunProgramArgs.txt"
+        "@C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\build\\moddev\\clientRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\build\\moddev\\clientRunVmArgs.txt",
-        "-Dfml.modFolders\u003dfortnite%%C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\bin\\main"
+        "@C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dfortnite%%C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
       "env": {},
@@ -28,17 +28,17 @@
       "request": "launch",
       "name": "Data",
       "presentation": {
-        "group": "Mod Development - fortnite-template-1.21.11",
+        "group": "Mod Development - fortnite-mc",
         "order": 1
       },
-      "projectName": "fortnite-template-1.21.11",
+      "projectName": "fortnite-mc",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\build\\moddev\\dataRunProgramArgs.txt"
+        "@C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\build\\moddev\\dataRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\build\\moddev\\dataRunVmArgs.txt",
-        "-Dfml.modFolders\u003dfortnite%%C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\bin\\main"
+        "@C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\build\\moddev\\dataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dfortnite%%C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
       "env": {},
@@ -50,17 +50,17 @@
       "request": "launch",
       "name": "GameTestServer",
       "presentation": {
-        "group": "Mod Development - fortnite-template-1.21.11",
+        "group": "Mod Development - fortnite-mc",
         "order": 2
       },
-      "projectName": "fortnite-template-1.21.11",
+      "projectName": "fortnite-mc",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\build\\moddev\\gameTestServerRunProgramArgs.txt"
+        "@C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\build\\moddev\\gameTestServerRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\build\\moddev\\gameTestServerRunVmArgs.txt",
-        "-Dfml.modFolders\u003dfortnite%%C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\bin\\main"
+        "@C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\build\\moddev\\gameTestServerRunVmArgs.txt",
+        "-Dfml.modFolders\u003dfortnite%%C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
       "env": {},
@@ -72,17 +72,17 @@
       "request": "launch",
       "name": "Server",
       "presentation": {
-        "group": "Mod Development - fortnite-template-1.21.11",
+        "group": "Mod Development - fortnite-mc",
         "order": 3
       },
-      "projectName": "fortnite-template-1.21.11",
+      "projectName": "fortnite-mc",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\build\\moddev\\serverRunProgramArgs.txt"
+        "@C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\build\\moddev\\serverRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\build\\moddev\\serverRunVmArgs.txt",
-        "-Dfml.modFolders\u003dfortnite%%C:\\Users\\Noel\\Desktop\\fortnite-template-1.21.11\\bin\\main"
+        "@C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dfortnite%%C:\\Users\\Abhil\\Desktop\\Github Projects\\fortnite-mc\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
       "env": {},
