@@ -1,14 +1,21 @@
 package com.noel.fortnitemod;
 
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.noel.fortnitemod.block.WoodWallBlock;
 
 public class BlockInit {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Fortnite.MODID);
@@ -39,4 +46,5 @@ public class BlockInit {
         BLOCKS.register(eventBus);
         ITEMS.register(eventBus);
     }
+    
 }
