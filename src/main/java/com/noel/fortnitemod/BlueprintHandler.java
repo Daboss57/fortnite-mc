@@ -88,17 +88,47 @@ public class BlueprintHandler {
             Block blockToPlace = getBlockForMode(mode);
             
             if (blockToPlace != null) {
-                // Create a UseOnContext for getStateForPlacement
-                UseOnContext useContext = new UseOnContext(level, player, event.getHand(), stack, hitResult);
-                BlockPlaceContext placeContext = new BlockPlaceContext(useContext);
-                BlockState stateToPlace = blockToPlace.getStateForPlacement(placeContext);
-                
-                if (stateToPlace != null) {
-                    level.setBlock(placePos, stateToPlace, 3);
-                    level.playSound(null, placePos, 
-                        stateToPlace.getSoundType().getPlaceSound(), 
-                        net.minecraft.sounds.SoundSource.BLOCKS, 
-                        1.0f, 1.0f);
+                // Determine orientation for 3x3 wall
+                Direction playerFacing = player.getDirection();
+                Direction wallWidthDir = playerFacing.getClockWise(); // Perpendicular to look direction
+                BlockState stateToPlace = blockToPlace.defaultBlockState();
+
+                // Set facing if applicable (for our custom wall)
+                if (stateToPlace.hasProperty(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING)) {
+                    stateToPlace = stateToPlace.setValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING, playerFacing.getOpposite());
+                }
+
+                // If it's a wall mode, place 3x3 grid
+                if (mode == BuildMode.WALL) {
+                    boolean placedAny = false;
+                    // Loop 3 wide (centered) and 3 high
+                    for (int y = 0; y < 3; y++) {
+                        for (int w = -1; w <= 1; w++) {
+                            BlockPos targetPos = placePos.relative(wallWidthDir, w).above(y);
+                            
+                            // Check if valid replacement
+                            if (level.getBlockState(targetPos).canBeReplaced() && level.isInWorldBounds(targetPos)) {
+                                level.setBlock(targetPos, stateToPlace, 3);
+                                placedAny = true;
+                            }
+                        }
+                    }
+                    
+                    if (placedAny) {
+                         level.playSound(null, placePos, 
+                            stateToPlace.getSoundType().getPlaceSound(), 
+                            net.minecraft.sounds.SoundSource.BLOCKS, 
+                            1.0f, 1.0f);
+                    }
+                } else {
+                    // Regular placement for other modes (Ramp/Floor) - simplified for now
+                    if (level.getBlockState(placePos).canBeReplaced()) {
+                        level.setBlock(placePos, stateToPlace, 3);
+                        level.playSound(null, placePos, 
+                             stateToPlace.getSoundType().getPlaceSound(), 
+                             net.minecraft.sounds.SoundSource.BLOCKS, 
+                             1.0f, 1.0f);
+                    }
                 }
             }
         }
