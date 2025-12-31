@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/outer_stairs",
+    "textures": {
+        "bottom": "fortnite:block/wood_wall",
+        "top": "fortnite:block/wood_wall",
+        "side": "fortnite:block/wood_wall"
+    }
+}

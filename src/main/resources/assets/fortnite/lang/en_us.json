@@ -1,0 +1,16 @@
+{
+  "itemGroup.fortnite": "Fortnite",
+  "block.fortnite.example_block": "Example Block",
+  "item.fortnite.example_item": "Example Item",
+  "item.fortnite.blueprint": "Blueprint",
+  "block.fortnite.wood_wall": "Wood Wall",
+  "block.fortnite.wood_ramp": "Wood Ramp",
+  "block.fortnite.wood_floor": "Wood Floor",
+  "fortnite.configuration.title": "Fortnite Configs",
+  "fortnite.configuration.section.fortnite.common.toml": "Fortnite Configs",
+  "fortnite.configuration.section.fortnite.common.toml.title": "Fortnite Configs",
+  "fortnite.configuration.items": "Item List",
+  "fortnite.configuration.logDirtBlock": "Log Dirt Block",
+  "fortnite.configuration.magicNumberIntroduction": "Magic Number Text",
+  "fortnite.configuration.magicNumber": "Magic Number"
+}
