@@ -1,40 +1,6 @@
 {
+    "parent": "minecraft:block/cube_all",
     "textures": {
-        "particle": "fortnite:block/wood_wall",
-        "texture": "fortnite:block/wood_wall"
-    },
-    "elements": [
-        {
-            "from": [
-                0,
-                0,
-                7
-            ],
-            "to": [
-                16,
-                16,
-                9
-            ],
-            "faces": {
-                "north": {
-                    "texture": "#texture"
-                },
-                "south": {
-                    "texture": "#texture"
-                },
-                "west": {
-                    "texture": "#texture"
-                },
-                "east": {
-                    "texture": "#texture"
-                },
-                "up": {
-                    "texture": "#texture"
-                },
-                "down": {
-                    "texture": "#texture"
-                }
-            }
-        }
-    ]
+        "all": "fortnite:block/wood_wall"
+    }
 }

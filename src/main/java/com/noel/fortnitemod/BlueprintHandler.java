@@ -88,6 +88,13 @@ public class BlueprintHandler {
             Block blockToPlace = getBlockForMode(mode);
             
             if (blockToPlace != null) {
+                // Apply snapping based on mode
+                if (mode == BuildMode.WALL) {
+                    placePos = BuildSnapHelper.getSnappedPosition(level, placePos, player, BlockInit.WOOD_WALL.get());
+                } else if (mode == BuildMode.RAMP) {
+                    placePos = BuildSnapHelper.getSnappedRampPosition(level, placePos, player);
+                }
+                
                 // Determine orientation for 3x3 wall
                 Direction playerFacing = player.getDirection();
                 Direction wallWidthDir = playerFacing.getClockWise(); // Perpendicular to look direction
@@ -120,14 +127,50 @@ public class BlueprintHandler {
                             net.minecraft.sounds.SoundSource.BLOCKS, 
                             1.0f, 1.0f);
                     }
-                } else {
-                    // Regular placement for other modes (Ramp/Floor) - simplified for now
-                    if (level.getBlockState(placePos).canBeReplaced()) {
-                        level.setBlock(placePos, stateToPlace, 3);
+                } else if (mode == BuildMode.FLOOR) {
+                    // 3x3 horizontal floor
+                    boolean placedAny = false;
+                    for (int x = -1; x <= 1; x++) {
+                        for (int z = -1; z <= 1; z++) {
+                            BlockPos targetPos = placePos.offset(x, 0, z);
+                            if (level.getBlockState(targetPos).canBeReplaced() && level.isInWorldBounds(targetPos)) {
+                                level.setBlock(targetPos, stateToPlace, 3);
+                                placedAny = true;
+                            }
+                        }
+                    }
+                    if (placedAny) {
                         level.playSound(null, placePos, 
-                             stateToPlace.getSoundType().getPlaceSound(), 
-                             net.minecraft.sounds.SoundSource.BLOCKS, 
-                             1.0f, 1.0f);
+                            stateToPlace.getSoundType().getPlaceSound(), 
+                            net.minecraft.sounds.SoundSource.BLOCKS, 
+                            1.0f, 1.0f);
+                    }
+                } else {
+                    // Ramp - use actual stairs for smooth walking
+                    Direction rampWidthDir = playerFacing.getClockWise();
+                    boolean placedAny = false;
+                    
+                    // Use oak stairs with proper facing
+                    BlockState stairState = net.minecraft.world.level.block.Blocks.OAK_STAIRS.defaultBlockState()
+                        .setValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING, playerFacing)
+                        .setValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HALF, 
+                                  net.minecraft.world.level.block.state.properties.Half.BOTTOM);
+                    
+                    for (int depth = 0; depth < 3; depth++) {
+                        for (int w = -1; w <= 1; w++) {
+                            BlockPos targetPos = placePos.relative(playerFacing, depth).relative(rampWidthDir, w).above(depth);
+                            if (level.getBlockState(targetPos).canBeReplaced() && level.isInWorldBounds(targetPos)) {
+                                level.setBlock(targetPos, stairState, 3);
+                                placedAny = true;
+                            }
+                        }
+                    }
+                    
+                    if (placedAny) {
+                        level.playSound(null, placePos, 
+                            stairState.getSoundType().getPlaceSound(), 
+                            net.minecraft.sounds.SoundSource.BLOCKS, 
+                            1.0f, 1.0f);
                     }
                 }
             }
@@ -172,7 +215,7 @@ public class BlueprintHandler {
         };
     }
     
-    private static BuildMode getBuildMode(ItemStack stack) {
+    public static BuildMode getBuildMode(ItemStack stack) {
         if (stack.has(net.minecraft.core.component.DataComponents.CUSTOM_DATA)) {
             var customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
             if (customData != null) {
@@ -184,6 +227,11 @@ public class BlueprintHandler {
             }
         }
         return BuildMode.WALL; // Default to wall
+    }
+    
+    // Alias for client renderer access
+    public static BuildMode getBuildModeStatic(ItemStack stack) {
+        return getBuildMode(stack);
     }
     
     private static void setBuildMode(ItemStack stack, BuildMode mode) {
